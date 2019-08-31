@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReviewsHeader from './ReviewsHeader';
 import ReviewsRating from './ReviewsRating';
 import ReviewsGraph from './ReviewsGraph';
+import Review from './Review';
 import axios from 'axios';
 import './Reviews.css';
 
@@ -24,6 +25,14 @@ class Reviews extends Component {
       })
   }
 
+  buildReviews = reviews => {
+    const reviewList = reviews.map(review => {
+      return <Review review={review} key={review.id} />
+    })
+
+    return reviewList;
+  }
+
   componentDidMount() {
     const productId = this.props.product.id;
     this.getReviews(productId);
@@ -39,6 +48,7 @@ class Reviews extends Component {
             ratingCount={this.props.product.rating_count} 
             ratingBreakdown={this.props.product.rating_breakdown}/>
         </div>
+        {this.state.reviews ? this.buildReviews(this.state.reviews) : null}
       </div>
     );
   }
