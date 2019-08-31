@@ -16,7 +16,6 @@ class Header extends Component {
 
     axios.get(url)
       .then(response => {
-        console.log(response.data)
         this.setState({
           categories: response.data
         })
