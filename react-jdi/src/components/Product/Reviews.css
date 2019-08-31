@@ -1,0 +1,31 @@
+.reviews-container {
+  background-color: white;
+  padding: 20px;
+}
+
+.reviews-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 24px;
+}
+
+.write-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.no-reviews h6 {
+  color: #807f77;
+}
+
+.ant-progress-status-success .ant-progress-bg {
+  background-color: #1890ff !important;
+}
+
+.ant-progress-status-success .ant-progress-text {
+  color: rgba(0, 0, 0, 0.45) !important;
+}

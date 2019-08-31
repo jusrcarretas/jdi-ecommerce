@@ -1,0 +1,53 @@
+.App header {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
+               Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.header-quote {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  background-color: #474642;
+  color: white;
+}
+
+.navbar-title {
+  float: left;
+  font-size: 2em;
+  color: #474642;
+  font-weight: bold;
+  margin: 0px 20px;
+}
+
+.navbar {
+  background-color: white;
+}
+
+.navbar ul a {
+  font-size: 13px;
+  color: #474642;
+}
+
+.divider-no-margin {
+  margin: 0px !important;
+}
+
+/* Center Navbar Items */
+/* Credits to Nico Kovacevic */
+/* source https://stackoverflow.com/questions/38964113/how-can-i-create-a-navbar-with-center-aligned-links-using-materialize */
+/* start center */
+nav.nav-center ul {
+  text-align: center;
+}
+
+nav.nav-center ul li {
+  display: inline;
+  float: none;
+}
+
+nav.nav-center ul li a {
+  display: inline-block;
+  padding: 0 10px;
+}
+/* end center */

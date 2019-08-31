@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: jdi_db
+  django:
+    build: ./django-jdi
+    container_name: jdi_django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./django-jdi:/django
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  react:
+    build: ./react-jdi
+    container_name: jdi_react
+    command: npm start
+    volumes:
+      - ./react-jdi:/react
+    ports:
+      - "3000:3000"
