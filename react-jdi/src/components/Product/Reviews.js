@@ -44,8 +44,12 @@ class Reviews extends Component {
     });
   };
 
-  // TODO Submits New Review
-  handleReviewSubmit = () => {
+  // Append newReview after completing
+  handleReviewSubmit = newReview => {
+    this.setState({
+      reviews: [newReview, ...this.state.reviews]
+    })
+
     this.setState({
       reviewModalVisible: false,
     });    
