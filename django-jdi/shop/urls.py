@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .viewsets import CategoryViewSet, ProductViewSet
+from .viewsets import CategoryViewSet, ProductViewSet, ReviewViewSet
 
 # Create your local urls here.
 
@@ -9,6 +9,7 @@ from .viewsets import CategoryViewSet, ProductViewSet
 router = DefaultRouter()
 router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
+router.register(r'reviews', ReviewViewSet)
 
 app_name = 'shop'
 urlpatterns = [
