@@ -32,16 +32,46 @@ const ReviewsGraph = props => {
         <div>1 Star&nbsp;</div>
       </div>
       <div className="progress-container inline-block">
-        <Progress percent={getRatingPercentage(ratingBreakdown, 5)}
-          defaultValue={0} />
-        <Progress percent={getRatingPercentage(ratingBreakdown, 4)}
-          defaultValue={0} />
-        <Progress percent={getRatingPercentage(ratingBreakdown, 3)}
-          defaultValue={0} />
-        <Progress percent={getRatingPercentage(ratingBreakdown, 2)}
-          defaultValue={0} />
-        <Progress percent={getRatingPercentage(ratingBreakdown, 1)}
-          defaultValue={0} />
+        <Progress 
+          percent={getRatingPercentage(ratingBreakdown, 5)}
+          defaultValue={0}
+          format={(percent) =>  {
+            if (percent === 100) {
+              return percent + '%'
+            }
+          }} />
+        <Progress 
+          percent={getRatingPercentage(ratingBreakdown, 4)}
+          defaultValue={0}
+          format={(percent) =>  {
+            if (percent === 100) {
+              return percent + '%'
+            }
+          }} />
+        <Progress 
+          percent={getRatingPercentage(ratingBreakdown, 3)}
+          defaultValue={0}
+          format={(percent) =>  {
+            if (percent === 100) {
+              return percent + '%'
+            }
+          }} />
+        <Progress 
+          percent={getRatingPercentage(ratingBreakdown, 2)}
+          defaultValue={0} 
+          format={(percent) =>  {
+            if (percent === 100) {
+              return percent + '%'
+            }
+          }} />
+        <Progress 
+          percent={getRatingPercentage(ratingBreakdown, 1)}
+          defaultValue={0}
+          format={(percent) =>  {
+            if (percent === 100) {
+              return percent + '%'
+            }
+          }} />
       </div>
     </div>
   );

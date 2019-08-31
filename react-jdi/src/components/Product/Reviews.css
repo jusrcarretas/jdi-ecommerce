@@ -21,3 +21,11 @@
 .no-reviews h6 {
   color: #807f77;
 }
+
+.ant-progress-status-success .ant-progress-bg {
+  background-color: #1890ff !important;
+}
+
+.ant-progress-status-success .ant-progress-text {
+  color: rgba(0, 0, 0, 0.45) !important;
+}
