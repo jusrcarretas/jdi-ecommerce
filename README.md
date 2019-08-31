@@ -25,6 +25,7 @@ Want some dummy data? Run this!
 ## Starting And Stopping The App
 To stop the application properly, run:
 - `docker-compose stop`
+
 To start the application the next time, run:
 - `docker-compose up`
 
