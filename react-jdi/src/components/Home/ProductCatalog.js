@@ -7,8 +7,15 @@ const ProductCatalog = props => {
   const { product, onCatalogClick } = props;
   const { Meta } = Card;
 
+  // Trigger onCatalogClick prop
   const handleClick = () => {
     onCatalogClick(product.id);
+  }
+
+  // Format prices to have a comma separator
+  // and to only have two decimal places
+  const priceToLocaleString = price => {
+    return price.toLocaleString(undefined, { minimumFractionDigits: 2 })
   }
 
   return (
@@ -18,7 +25,7 @@ const ProductCatalog = props => {
         cover={<img className="catalog-image" alt="" src={product.image}/>}>
         <Meta title={product.name} />
         <div className="product-price">{product.currency + " " 
-          + product.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+          + priceToLocaleString(product.price)}</div>
         <Rate disabled defaultValue={product.average_rating} />
       </Card>
     </div>

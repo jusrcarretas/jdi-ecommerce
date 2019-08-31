@@ -12,6 +12,7 @@ class ProductCatalogs extends Component {
   getProductsByCategory = categoryId => {
     let url;
 
+    // Change URL based on the availability of categoryId
     if (categoryId) {
       url = 'http://localhost:8000/api/summary/products/?category=' + categoryId;
     }
@@ -21,7 +22,6 @@ class ProductCatalogs extends Component {
 
     axios.get(url)
       .then(response => {
-        console.log(response.data)
         this.setState({
           products: response.data
         })
@@ -31,11 +31,13 @@ class ProductCatalogs extends Component {
       });
   }
 
+  // When a ProductCatalog is clicked, update URL
   onCatalogClick = productId => {
     const path = '/products/' + productId;
     this.props.history.push(path);
   }
 
+  // Generate a ProductCatalog for every product in the products state
   buildProducts = products => {
     const productCatalogs = products.map(product => {
       return <ProductCatalog product={product} key={product.id}
@@ -46,14 +48,16 @@ class ProductCatalogs extends Component {
   }
 
   componentDidMount() {
-    const { categoryId } = this.props.match.params
-    this.getProductsByCategory(categoryId);
+    const { categoryId } = this.props.match.params // Fetch categoryId from the URL Parameters
+    this.getProductsByCategory(categoryId); // Set initial state for products
   }
 
   componentDidUpdate = prevProps => {
-    const { categoryId } = this.props.match.params;
-    const prevCategoryId = prevProps.match.params.categoryId;
+    const { categoryId } = this.props.match.params; // currentCategoryId
+    const prevCategoryId = prevProps.match.params.categoryId; // Fetch previous Category from prevProps
 
+    // Match the previousCategoryId with the currentCategoryId
+    // Update products state if they are not the same 
     if (categoryId !== prevCategoryId) {
       this.getProductsByCategory(categoryId);
     }
