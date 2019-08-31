@@ -77,7 +77,8 @@ class Reviews extends Component {
         <AddReview
           visible={this.state.reviewModalVisible}
           handleOk={this.handleReviewSubmit}
-          handleCancel={this.handleReviewCancel}/>
+          handleCancel={this.handleReviewCancel}
+          productName={this.props.product.name}/>
       </div>
     );
   }
