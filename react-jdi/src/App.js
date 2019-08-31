@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import ProductCatalogs from './components/Home/ProductCatalogs';
 import './App.css';
 
 function App() {
@@ -8,6 +9,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
+        <div className="container main">
+          <Route path="/" component={ProductCatalogs} exact/>
+        </div>
       </BrowserRouter>
     </div>
   );
