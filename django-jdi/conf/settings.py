@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # Dependencies
     'rest_framework',
     'django_filters',
+
+    # Custom Apps
+    'shop',
 ]
 
 MIDDLEWARE = [
