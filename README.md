@@ -19,6 +19,9 @@ As we have adertised, it is very easy to deploy. Just follow these steps!
 3. Then run `docker-compose up`
 4. Finally, initialize the database by running `docker exec -it jdi_django python manage.py migrate`
 
+The application will then run at:
+- [http://localhost:3000](http://localhost:3000)
+
 Want some dummy data? Run this!
 - `docker exec -it jdi_django python manage.py loaddata shop`
 
