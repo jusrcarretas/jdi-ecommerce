@@ -1,0 +1,15 @@
+.reviews-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 24px;
+}
+
+.write-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
