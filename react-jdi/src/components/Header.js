@@ -30,7 +30,7 @@ class Header extends Component {
     let categoryItems = categories.map((category) => {
       return (
         <Fragment key={category.id}>
-          <Divider type="vertical" />
+          <Divider className="divider-no-margin" type="vertical" />
           <li><Link to={"/categories/" + category.id}>{category.name}</Link></li>
         </Fragment>
       )
