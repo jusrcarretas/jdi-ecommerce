@@ -9,7 +9,7 @@ const ReviewsRating = props => {
       <div className="inline-block margin-right-10">
         <div className="rating-details">
           <div className="text-highlight text-bold text-emphasize4">
-            {averageRating.toFixed(1)}
+            {averageRating.toFixed(2)}
           </div>
           <Rate disabled defaultValue={averageRating} />
         </div>
