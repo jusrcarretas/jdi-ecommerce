@@ -107,6 +107,20 @@ class Review extends Component {
     }
   }
 
+  isDownvoteAvailable = () => {
+    // Disable downvote if sending
+    // Disable downvote if votes is 0 and it's not downvoted
+    // Disable downvote if it is upvoted and the the number of votes is 1
+    if (this.state.sending || 
+        (!this.state.downvoted && this.state.review.vote_count === 0) || 
+        (this.state.upvoted && this.state.review.vote_count === 1)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   // Convert review prop into state to allow
   // updating its own values (for example vote_count)
   updateReviewState = () => {
@@ -140,7 +154,7 @@ class Review extends Component {
           </Button>
           <Button 
             onClick={this.onDownvote} 
-            disabled={this.state.sending}>
+            disabled={this.isDownvoteAvailable()}>
             <Icon 
               type="dislike" 
               theme="filled" 
