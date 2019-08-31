@@ -22,9 +22,12 @@ As we have adertised, it is very easy to deploy. Just follow these steps!
 Want some dummy data? Run this!
 - `docker exec -it jdi_django python manage.py loaddata shop`
 
-## Starting The App
-After finishing the setup, just run this to start the app the next time you want it running!
+## Starting And Stopping The App
+To stop the application properly, run:
+- `docker-compose stop`
+To start the application the next time, run:
 - `docker-compose up`
+
 ## Tests
 Tests are done via cURL commands. It makes it a lot easier to execute the same piece of API Calls over and over again.
 1. Fetch all categories
