@@ -36,41 +36,31 @@ const ReviewsGraph = props => {
           percent={getRatingPercentage(ratingBreakdown, 5)}
           defaultValue={0}
           format={(percent) =>  {
-            if (percent === 100) {
-              return percent + '%'
-            }
+            return percent + '%';
           }} />
         <Progress 
           percent={getRatingPercentage(ratingBreakdown, 4)}
           defaultValue={0}
           format={(percent) =>  {
-            if (percent === 100) {
-              return percent + '%'
-            }
+            return percent + '%';
           }} />
         <Progress 
           percent={getRatingPercentage(ratingBreakdown, 3)}
           defaultValue={0}
           format={(percent) =>  {
-            if (percent === 100) {
-              return percent + '%'
-            }
+            return percent + '%';
           }} />
         <Progress 
           percent={getRatingPercentage(ratingBreakdown, 2)}
           defaultValue={0} 
           format={(percent) =>  {
-            if (percent === 100) {
-              return percent + '%'
-            }
+            return percent + '%';
           }} />
         <Progress 
           percent={getRatingPercentage(ratingBreakdown, 1)}
           defaultValue={0}
           format={(percent) =>  {
-            if (percent === 100) {
-              return percent + '%'
-            }
+            return percent + '%';
           }} />
       </div>
     </div>
