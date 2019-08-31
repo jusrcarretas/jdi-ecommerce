@@ -1,0 +1,15 @@
+.review-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-product {
+  text-align: center;
+  font-size: 24px;
+  color: #ee4d2d;
+  font-weight: bold;
+}
+
+.ant-modal-title {
+  font-weight: bold !important;
+}
