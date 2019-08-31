@@ -1,7 +1,8 @@
 from rest_framework import mixins, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Category, Product, Review
-from .serializers import CategorySerializer, ProductSerializer, ReviewSerializer
+from .serializers import (CategorySerializer, ProductSerializer, ReviewSerializer,
+                          ShortProductSerializer)
 
 # Create your viewsets here.
 
@@ -13,6 +14,23 @@ class CategoryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class ShortProductViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    A Viewset for Products that would:
+        - List products with summarized information
+        - Filter all products by categories
+
+    This endpoint will be used to render product catalogs
+    Using shortened data would speed up component loading time
+    """
+    queryset = Product.objects.all()
+    serializer_class = ShortProductSerializer
+
+    # For filtering via category
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['category', ]
 
 
 class ProductViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):

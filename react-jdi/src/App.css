@@ -1,0 +1,64 @@
+@import '~antd/dist/antd.css';
+@import './materialize-css.css';
+
+.main {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* start text-styles */
+.text-highlight {
+  color: #ee4d2d;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-emphasize1 {
+  font-size: 16px;
+}
+
+.text-emphasize2 {
+  font-size: 32px;
+}
+
+.text-emphasize3 {
+  font-size: 48px;
+}
+
+.text-emphasize4 {
+  font-size: 64px;
+}
+/* end-text-styles */
+
+/* start-displays */
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.inline-block {
+  display: inline-block;
+}
+/* end-displays */
+
+/* start-align */
+.center-children {
+  text-align: center;
+}
+/* end-align */
+
+/* margin-start */
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+/* margin-end */
