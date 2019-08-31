@@ -8,7 +8,8 @@ import './Reviews.css';
 
 class Reviews extends Component {
   state = {
-    reviews: null
+    reviews: null,
+    reviewModalVisible: false
   }
 
   getReviews = productId => {
@@ -32,6 +33,24 @@ class Reviews extends Component {
 
     return reviewList;
   }
+
+  showReviewModal = () => {
+    this.setState({
+      reviewModalVisible: true,
+    });
+  };
+
+  handleReviewSubmit = () => {
+    this.setState({
+      reviewModalVisible: false,
+    });    
+  };
+
+  handleReviewCancel = () => {
+    this.setState({
+      reviewModalVisible: false,
+    });
+  };
 
   componentDidMount() {
     const productId = this.props.product.id;
