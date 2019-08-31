@@ -11,6 +11,7 @@ function App() {
         <Header />
         <div className="container main">
           <Route path="/" component={ProductCatalogs} exact/>
+          <Route path="/categories/:categoryId" component={ProductCatalogs}/>
         </div>
       </BrowserRouter>
     </div>

@@ -9,8 +9,15 @@ class ProductCatalogs extends Component {
   }
 
   // Fetch product catalogs
-  getProducts = () => {
-    let url = 'http://localhost:8000/api/summary/products';
+  getProductsByCategory = categoryId => {
+    let url;
+
+    if (categoryId) {
+      url = 'http://localhost:8000/api/summary/products/?category=' + categoryId;
+    }
+    else {
+      url = 'http://localhost:8000/api/summary/products/';
+    }
 
     axios.get(url)
       .then(response => {
@@ -33,13 +40,23 @@ class ProductCatalogs extends Component {
     const productCatalogs = products.map(product => {
       return <ProductCatalog product={product} key={product.id}
         onCatalogClick={this.onCatalogClick} />
-    })
+    });
 
     return productCatalogs;
   }
 
   componentDidMount() {
-    this.getProducts();
+    const { categoryId } = this.props.match.params
+    this.getProductsByCategory(categoryId);
+  }
+
+  componentDidUpdate = prevProps => {
+    const { categoryId } = this.props.match.params;
+    const prevCategoryId = prevProps.match.params.categoryId;
+
+    if (categoryId !== prevCategoryId) {
+      this.getProductsByCategory(categoryId);
+    }
   }
 
   render() { 
