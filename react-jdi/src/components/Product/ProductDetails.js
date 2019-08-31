@@ -33,7 +33,7 @@ class ProductDetails extends Component {
     return (
       <div>
         {this.state.product ? <Product product={this.state.product}/> : null}
-        {this.state.product ? <Reviews productId={this.state.product.id}/> : null}
+        {this.state.product ? <Reviews product={this.state.product}/> : null}
       </div>
     );
   }
