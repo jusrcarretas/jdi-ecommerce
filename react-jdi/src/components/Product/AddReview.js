@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'antd';
+import './AddReview.css';
+import AddReviewHeader from './AddReviewHeader';
 
 class AddReview extends Component {
-  state = {}
+  state = {
+    rating: 5
+  }
+
+  // Update rating state based on AddReview modal
+  handleRatingChange = newRating => {
+    this.setState({
+      rating: newRating
+    });
+  }
+
   render() {
     return (
       <Modal
@@ -23,7 +35,10 @@ class AddReview extends Component {
             Submit
           </Button>
         ]}>
-        Add Review
+        <AddReviewHeader
+          productName={this.props.productName}
+          rating={this.state.rating}
+          handleRatingChange={this.handleRatingChange}/>
       </Modal>
     );
   }
