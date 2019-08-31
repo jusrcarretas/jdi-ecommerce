@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+@import './materialize-css.css';
 
 .main {
   margin-top: 20px;
