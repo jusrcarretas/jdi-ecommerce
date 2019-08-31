@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Modal } from 'antd';
-import './AddReview.css';
 import AddReviewHeader from './AddReviewHeader';
+import axios from 'axios';
+import './AddReview.css';
 
 class AddReview extends Component {
   state = {
     rating: 5,
     title: null,
-    comment: null
+    comment: null,
+    sending: false
   }
 
   // Update rating state based on AddReview modal
@@ -17,10 +19,47 @@ class AddReview extends Component {
     });
   }
 
+
+  // Handle input textchanges
   handleTextChanged = e => {
     this.setState({
       [e.target.id]: e.target.value
     });
+  }
+
+  // Post Review
+  handleSubmit = e => {
+    e.preventDefault();
+
+    this.setState({
+      sending: true
+    });
+
+    const url = 'http://localhost:8000/api/reviews/';
+
+    axios.post(url, {
+      title: this.state.title,
+      comment: this.state.comment,
+      rating: this.state.rating,
+      product: this.props.productId
+    })
+      .then((response) => {
+        // Send back response data to handleOk
+        // to append new review to the list
+        this.props.handleOk(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(() => {
+        // Reset states to empty form after completion
+        this.setState({
+          rating: 5,
+          title: null,
+          comment: null,
+          sending: false
+        })
+      });
   }
 
   render() {
@@ -40,7 +79,8 @@ class AddReview extends Component {
             key="ok"
             type="primary"
             form="form-add-review"
-            htmlType="submit">
+            htmlType="submit"
+            loading={this.state.sending}>
             Submit
           </Button>
         ]}>
@@ -49,7 +89,7 @@ class AddReview extends Component {
           rating={this.state.rating}
           handleRatingChange={this.handleRatingChange} />
 
-        <Form id="form-add-review" onSubmit={this.props.handleOk}>
+        <Form id="form-add-review" onSubmit={this.handleSubmit}>
           <Form.Item label="Title">
             <Input
               type="text"
