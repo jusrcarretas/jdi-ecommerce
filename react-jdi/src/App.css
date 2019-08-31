@@ -5,6 +5,8 @@
   margin-bottom: 20px;
 }
 
+
+/* start text-styles */
 .text-highlight {
   color: #ee4d2d;
 }
@@ -28,3 +30,30 @@
 .text-emphasize4 {
   font-size: 64px;
 }
+/* end-text-styles */
+
+/* start-displays */
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.inline-block {
+  display: inline-block;
+}
+/* end-displays */
+
+/* start-align */
+.center-children {
+  text-align: center;
+}
+/* end-align */
+
+/* margin-start */
+.margin-right-10 {
+  margin-right: 10px;
+}
+/* margin-end */
