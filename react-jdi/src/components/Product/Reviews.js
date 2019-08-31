@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import ReviewsHeader from './ReviewsHeader';
+import ReviewsRating from './ReviewsRating';
+import ReviewsGraph from './ReviewsGraph';
 import axios from 'axios';
+import './Reviews.css';
 
 class Reviews extends Component {
   state = {
@@ -21,14 +25,20 @@ class Reviews extends Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props;
+    const productId = this.props.product.id;
     this.getReviews(productId);
   }
 
   render() { 
     return (
       <div>
-        Reviews
+        <ReviewsHeader />
+        <div className="center-children">
+          <ReviewsRating averageRating={this.props.product.average_rating} />
+          <ReviewsGraph 
+            ratingCount={this.props.product.rating_count} 
+            ratingBreakdown={this.props.product.rating_breakdown}/>
+        </div>
       </div>
     );
   }
