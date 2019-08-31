@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Divider } from 'antd';
 import ReviewsHeader from './ReviewsHeader';
 import ReviewsRating from './ReviewsRating';
 import ReviewsGraph from './ReviewsGraph';
@@ -48,6 +49,8 @@ class Reviews extends Component {
   handleReviewSubmit = newReview => {
     this.setState({
       reviews: [newReview, ...this.state.reviews]
+    }, () => {
+      this.props.handleNewReview();
     })
 
     this.setState({
@@ -62,6 +65,17 @@ class Reviews extends Component {
     });
   };
 
+  renderNoReviews() {
+    return (
+      <div>
+        <Divider type="horizontal" />
+        <div className="no-reviews center-children">
+          <h6>No reviews yet. Be the first one!</h6>
+        </div>
+      </div>
+    )
+  }
+
   componentDidMount() {
     const productId = this.props.product.id;
     this.getReviews(productId);
@@ -69,7 +83,7 @@ class Reviews extends Component {
 
   render() { 
     return (
-      <div>
+      <div className="reviews-container">
         <ReviewsHeader handleClick={this.showReviewModal} />
         <div className="center-children">
           <ReviewsRating averageRating={this.props.product.average_rating} />
@@ -77,7 +91,10 @@ class Reviews extends Component {
             ratingCount={this.props.product.rating_count} 
             ratingBreakdown={this.props.product.rating_breakdown}/>
         </div>
-        {this.state.reviews ? this.buildReviews(this.state.reviews) : null}
+        {this.state.reviews ? (
+          this.state.reviews.length > 0 ? 
+            this.buildReviews(this.state.reviews) : this.renderNoReviews()
+        ) : null}
         <AddReview
           visible={this.state.reviewModalVisible}
           handleOk={this.handleReviewSubmit}

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Reviews from './Reviews';
 import Product from './Product';
 import axios from 'axios';
-import './ProductDetails.css';
 
 class ProductDetails extends Component {
   state = {
@@ -24,6 +23,15 @@ class ProductDetails extends Component {
       })
   }
 
+  // Trigger for refreshing product data when
+  // a new Review is posted using AddReview
+  handleNewReview = () => {
+    const { productId } = this.props.match.params;
+
+    this.getProduct(productId);
+  }
+
+
   componentDidMount() {
     const { productId } = this.props.match.params; // Fetch productId from URL parameters
     this.getProduct(productId);
@@ -33,7 +41,7 @@ class ProductDetails extends Component {
     return (
       <div>
         {this.state.product ? <Product product={this.state.product}/> : null}
-        {this.state.product ? <Reviews product={this.state.product}/> : null}
+        {this.state.product ? <Reviews product={this.state.product} handleNewReview={this.handleNewReview}/> : null}
       </div>
     );
   }
