@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReviewsHeader from './ReviewsHeader';
 import ReviewsRating from './ReviewsRating';
 import ReviewsGraph from './ReviewsGraph';
+import AddReview from './AddReview';
 import Review from './Review';
 import axios from 'axios';
 import './Reviews.css';
@@ -12,6 +13,7 @@ class Reviews extends Component {
     reviewModalVisible: false
   }
 
+  // Fetch Reviews for the selected product
   getReviews = productId => {
     const url = 'http://localhost:8000/api/reviews/?product=' + productId;
 
@@ -26,6 +28,7 @@ class Reviews extends Component {
       })
   }
 
+  // Generate list of Review Components per review
   buildReviews = reviews => {
     const reviewList = reviews.map(review => {
       return <Review review={review} key={review.id} />
@@ -34,18 +37,21 @@ class Reviews extends Component {
     return reviewList;
   }
 
+  // Shows the AddReview modal
   showReviewModal = () => {
     this.setState({
       reviewModalVisible: true,
     });
   };
 
+  // TODO Submits New Review
   handleReviewSubmit = () => {
     this.setState({
       reviewModalVisible: false,
     });    
   };
 
+  // Hides the AddReview modal
   handleReviewCancel = () => {
     this.setState({
       reviewModalVisible: false,
@@ -60,7 +66,7 @@ class Reviews extends Component {
   render() { 
     return (
       <div>
-        <ReviewsHeader />
+        <ReviewsHeader handleClick={this.showReviewModal} />
         <div className="center-children">
           <ReviewsRating averageRating={this.props.product.average_rating} />
           <ReviewsGraph 
@@ -68,6 +74,10 @@ class Reviews extends Component {
             ratingBreakdown={this.props.product.rating_breakdown}/>
         </div>
         {this.state.reviews ? this.buildReviews(this.state.reviews) : null}
+        <AddReview
+          visible={this.state.reviewModalVisible}
+          handleOk={this.handleReviewSubmit}
+          handleCancel={this.handleReviewCancel}/>
       </div>
     );
   }
