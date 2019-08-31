@@ -4,3 +4,27 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.text-highlight {
+  color: #ee4d2d;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-emphasize1 {
+  font-size: 16px;
+}
+
+.text-emphasize2 {
+  font-size: 32px;
+}
+
+.text-emphasize3 {
+  font-size: 48px;
+}
+
+.text-emphasize4 {
+  font-size: 64px;
+}
