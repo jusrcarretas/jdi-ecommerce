@@ -1,8 +1,7 @@
 FROM python:3.6
-ENV PYTHONUNBUFFERED 1
 
-WORKDIR /django
-COPY requirements.txt /django/
+WORKDIR /django-jdi
+COPY requirements.txt /django-jdi
 RUN pip install -r requirements.txt
 
-COPY . /django
+EXPOSE 8000

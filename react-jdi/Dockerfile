@@ -1,7 +1,8 @@
 FROM node:8.10.0-alpine
 
-WORKDIR /react
-COPY package.json /react/
+WORKDIR /react-jdi
+COPY package.json /react-jdi
+
 RUN npm install
 
-COPY . /react
+EXPOSE 3000
